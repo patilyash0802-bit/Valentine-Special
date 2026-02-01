@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Tanishka ❤️</title>
+
+<style>
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url("couple.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: 'Comic Sans MS', cursive;
+    overflow: hidden;
+}
+
+.box {
+    background: rgba(255,255,255,0.95);
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    z-index: 2;
+}
+
+h1 { color: #c9184a; }
+h2 { color: #ff4d6d; font-weight: normal; }
+
+button {
+    padding: 14px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+#yes {
+    background: #ff4d6d;
+    color: white;
+}
+
+#no {
+    background: #ddd;
+    position: absolute;
+}
+
+.rose {
+    position: fixed;
+    font-size: 32px;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-50px); opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5;
+}
+
+.popup img {
+    width: 280px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255,0,0,0.6);
+}
+
+.popup h1 {
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>Tanishka ❤️</h1>
+    <h2>Will you be my Valentine? 🌹</h2>
+
+    <button id="yes" onclick="yesClicked()">YES 💘</button>
+    <button id="no" onmouseover="moveNo()">NO 💔</button>
+
+    <p style="color:#777;">— Yours, Yash 💖</p>
+</div>
+
+<audio id="music" src="song.mp3.mp3"></audio>
+
+<script>
+function moveNo() {
+    const no = document.getElementById("no");
+    no.style.left = Math.random() * (window.innerWidth - 120) + "px";
+    no.style.top = Math.random() * (window.innerHeight - 120) + "px";
+}
+
+function yesClicked() {
+    const music = document.getElementById("music");
+music.currentTime = 0;
+music.volume = 0.8;
+music.play();
+
+
+    const popup = document.createElement("div");
+    popup.className = "popup";
+    popup.innerHTML = `
+        <img src="./couple.jpg.jpeg" alt="Our Photo">
+
+       <h1>Tanishka ❤️ Yash<br>Forever 🌹</h1>
+    `;
+    document.body.appendChild(popup);
+
+    setInterval(createRose, 120);
+}
+
+function createRose() {
+    const rose = document.createElement("div");
+    rose.className = "rose";
+    rose.innerHTML = "🌹";
+    rose.style.left = Math.random() * window.innerWidth + "px";
+    rose.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(rose);
+
+    setTimeout(() => rose.remove(), 6000);
+}
+</script>
+
+</body>
+</html>
